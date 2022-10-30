@@ -1,0 +1,110 @@
+<main class="flex-shrink-0">
+    <div class="py-5 bg-light">
+      <div class="row g-2" style="margin-left:20px">
+        <div class="mainpage" style="width:200px">
+          <h5 class="text-md-start">Client Filter</h5>
+          <div class="formContainerng">
+            <form #productsForm="ngForm" (ngSubmit)="filtra(productsForm.value)">
+              <div class="col-md">
+                
+                <select class="form-select" placeholder="sortBy" id="sortBy" name="sortBy"[(ngModel)]="sortByselected">
+                    <option *ngFor="let n of sortBy" [value]="n" >{{ n.title }}</option>"
+                  
+                </select>
+              </div>
+              <div class="col-md">
+                <select class="form-select" ar placeholder="sortType" id="sortType" name="sortType" ngModel>
+                  <option selected>Open this select menu</option>
+                  <option value="ASC">Ascending order</option>
+                  <option value="DESC">Descending order</option>
+                </select>
+              </div>
+              <div class="col-md">
+                <div class="form-floating">
+                <input class="form-control" id="pageNumber" type="number" placeholder="pageNumber" name="pageNumber" ngModel>
+                <label for="pageNumber">Page Number</label>
+                </div>
+              </div>
+              <div class="col-md">
+                <div class="form-floating">
+                  <input class="form-control" id="resultForPage" type="number" placeholder="resultsForPage" name="resultsForPage" ngModel>
+                  <label for="resultForPage">Result for Page</label>
+              </div>
+              </div>
+              <div class="col-md">
+                <div class="form-floating">
+                <input class="form-control" id="dataAssunzioneStart" type="date" placeholder="dataAssunzioneStart" name="dataAssunzioneStart" ngModel>
+                <label for="dataAssunzioneStart">From</label>
+              </div>
+            </div>
+              <div class="col-md">
+                <div class="form-floating">
+                <input class="form-control" id="dataAssunzioneEnd" type="date" placeholder="dataAssunzioneEnd" name="dataAssunzioneEnd" ngModel>
+                <label for="dataAssunzioneEnd">To</label>
+              </div>
+            </div>
+              <div class="col-md">
+                <div class="form-floating">
+                <input class="form-control" id="nome" type="text" placeholder="nome" name="nome" ngModel>
+                <label for="nome">Name</label>
+                </div>
+              </div>
+              <div class="col-md">
+                <div class="form-floating">
+                <input class="form-control" id="cognome" type="text" placeholder="cognome" name="cognome" ngModel>
+                <label for="cognome">Surname</label>
+                </div>
+              </div>
+              <div class="col-md">
+                <div class="form-floating">
+              <input class="form-control" id="program" type="number" placeholder="truolo" name="truolo" ngModel>
+              <label for="program">Program</label>
+            </div>
+          </div>
+              <div class="col-md">
+                <div class="form-floating">
+              <input class="btn btn-primary" type="submit" value="Invia">
+            </div>
+          </div>
+            </form>
+          </div>
+        </div>
+    
+    
+    
+        <div class="card" style="width:80%">
+          <h3 class="text-center"> Client List</h3>
+          <h5 style="position: absolute; top: 1%; right: 1%">clients: {{numClienti}}</h5>
+          <div class = "card-body">
+            <table class="table table-striped">
+              <thead>
+                <th>Number</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>ID</th>
+                <th>Health ID</th>
+                <th>Last DNA test date</th>
+                <th>Date of Birth</th>
+                <th>Program</th>
+                <th>Police Shared</th>
+              </thead>
+              <tbody>
+                <tr *ngFor = "let cliente of clienti">
+                  <td> {{ cliente.matricola }} </td>
+                  <td> {{ cliente.nome }} </td>
+                  <td> {{ cliente.cognome }} </td>
+                  <td> {{ cliente.cartaIdentita }} </td>
+                  <td> {{ cliente.codiceFiscale }} </td>
+                  <td> {{ cliente.dataAssunzione }} </td>
+                  <td> {{ cliente.dataDiNascita }} </td>
+                  <td> {{ cliente.troulo }} </td>
+                  <td> {{ cliente.tstato }} </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    </main>
