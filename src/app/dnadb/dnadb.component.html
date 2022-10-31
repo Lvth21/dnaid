@@ -7,21 +7,18 @@
             <form #productsForm="ngForm" (ngSubmit)="filtra(productsForm.value)">
               <div class="col-md">
                 
-                <select class="form-select" placeholder="sortBy" id="sortBy" name="sortBy"[(ngModel)]="sortByselected">
-                    <option *ngFor="let n of sortBy" [value]="n" >{{ n.title }}</option>"
-                  
+                <select class="form-select" placeholder="sortBy" id="sortBys" name="sortBy"[(ngModel)]="sortByselected">
+                    <option *ngFor="let by of sortBys" [value]="by" >{{ by.title }}</option>
                 </select>
               </div>
               <div class="col-md">
-                <select class="form-select" ar placeholder="sortType" id="sortType" name="sortType" ngModel>
-                  <option selected>Open this select menu</option>
-                  <option value="ASC">Ascending order</option>
-                  <option value="DESC">Descending order</option>
+                <select class="form-select" ar placeholder="sortType" id="sortType" name="sortType" [(ngModel)]="sortTypeselected">
+                  <option *ngFor="let type of sortTypes" [value]="type">{{ type.title }}</option>
                 </select>
               </div>
               <div class="col-md">
                 <div class="form-floating">
-                <input class="form-control" id="pageNumber" type="number" placeholder="pageNumber" name="pageNumber" ngModel>
+                <input [value]="pageNumber" class="form-control" id="pageNumber" type="number" placeholder="pageNumber" name="pageNumber" ngModel>
                 <label for="pageNumber">Page Number</label>
                 </div>
               </div>

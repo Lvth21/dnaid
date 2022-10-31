@@ -15,30 +15,41 @@ export class DnadbComponent implements OnInit {
   numClienti!: number;
   clienti!: Cliente[];
  
-  //sortByselected: FormControl = new FormControl();
+
  
   headers= new HttpHeaders()
   .set('content-type', 'application/json')
   .set('Access-Control-Allow-Origin', '*');
   
-  sortBy=[{id: "nome", title: "Name"},
-  {id: "cognome", title: "Surname"},  {id: "dataAssunzione", title: "Last DNA test date"},  {id: "dataDiNascita", title: "Place of Birth"},  {id: "luogoDiNascita", title: "Date of Birth"},
-  {id: "tstato", title: "Police Shared"},  {id: "truolo", title: "Program"},  {id: "cartaIdentita", title: "ID"},  {id: "codiceFiscale", title: "Health ID"},];
-  //sortByselected= {id: "nome", title: "Name"};
-  sortByselected= this.sortBy[0];
   form: FormGroup = new FormGroup({});
+  //sortType select options
+  sortTypes=[{id: "ASC", title: "Ascending order" }, {id: "DESC", title: "Descending order" }];
+  sortTypeselected= this.sortTypes[0];
+  //sortby select options
+  sortBys=[{id: "nome", title: "Name"}, {id: "cognome", title: "Surname"},  {id: "dataAssunzione", title: "Last DNA test date"}, 
+   {id: "dataDiNascita", title: "Place of Birth"},  {id: "luogoDiNascita", title: "Date of Birth"}, {id: "tstato", title: "Police Shared"}, 
+    {id: "truolo", title: "Program"},  {id: "cartaIdentita", title: "ID"},  {id: "codiceFiscale", title: "Health ID"},];
+  sortByselected= this.sortBys[0];
+  
+  pageNumber: number = 1;
   
 
   constructor(private clienteService: ClienteService, private http: HttpClient, private fb: FormBuilder) {
+    //default value for sortby
     this.form = fb.group({
-      n: [this.sortByselected, [Validators.required]]
+      by: [this.sortByselected, [Validators.required]]
     });
 
-    
+    //default value for type
+    this.form = fb.group({
+      type: [this.sortTypeselected, [Validators.required]]
+    });
+
      }
 
   ngOnInit() {
     this.loadNumClienti();
+    
     
   }
 
