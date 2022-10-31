@@ -8,7 +8,14 @@ import { HttpHeaders } from '@angular/common/http';
 @Component({
   selector: 'app-dnadb',
   templateUrl: './dnadb.component.html',
-  styleUrls: ['./dnadb.component.css']
+  styleUrls: ['./dnadb.component.css'],
+  template: `
+  <ul>
+    <li *ngFor="let item of collection | paginate: { itemsPerPage: 10, currentPage: p }"> ... </li>
+  </ul>
+             
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  `
 })
 export class DnadbComponent implements OnInit {
 
@@ -24,14 +31,21 @@ export class DnadbComponent implements OnInit {
   form: FormGroup = new FormGroup({});
   //sortType select options
   sortTypes=[{id: "ASC", title: "Ascending order" }, {id: "DESC", title: "Descending order" }];
-  sortTypeselected= this.sortTypes[0];
+  sortTypeselected= this.sortTypes[0].id;
   //sortby select options
   sortBys=[{id: "nome", title: "Name"}, {id: "cognome", title: "Surname"},  {id: "dataAssunzione", title: "Last DNA test date"}, 
    {id: "dataDiNascita", title: "Place of Birth"},  {id: "luogoDiNascita", title: "Date of Birth"}, {id: "tstato", title: "Police Shared"}, 
     {id: "truolo", title: "Program"},  {id: "cartaIdentita", title: "ID"},  {id: "codiceFiscale", title: "Health ID"},];
-  sortByselected= this.sortBys[0];
+  sortByselected= this.sortBys[0].id;
+  p: number = 1;
+  collection: any[] = [1,2,3,4];
+
+
+  pageNumberDefault: number = 1;
+  resultsNumberDefault: number = 10;
+  allPages!: number[]; 
   
-  pageNumber: number = 1;
+  pages = this.resultsNumberDefault;
   
 
   constructor(private clienteService: ClienteService, private http: HttpClient, private fb: FormBuilder) {
@@ -44,13 +58,11 @@ export class DnadbComponent implements OnInit {
     this.form = fb.group({
       type: [this.sortTypeselected, [Validators.required]]
     });
-
+    
      }
 
   ngOnInit() {
     this.loadNumClienti();
-    
-    
   }
 
   loadNumClienti(){
@@ -60,11 +72,15 @@ export class DnadbComponent implements OnInit {
     })
   } 
     
-  filtra(filtro: {sortBy:string, sortType:string, pageNumber: number, resultsForPage: number
+  filtra(filtro: {sortBy:string, sortType:string, //pageNumber: number, resultsForPage: number
     dataAssunzioneStart: Date, dataAssunzioneEnd: Date, nome: string, congome: string, truolo: number  }){
+      console.log(filtro);
       this.clienteService.filtraCliente(filtro).subscribe((data: Cliente[]) => {
+        console.log(data);
         this.clienti = data;
       });
+
+    
   }
 }
 

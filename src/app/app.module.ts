@@ -7,6 +7,7 @@ import { DnadbComponent } from './dnadb/dnadb.component';
 import { ClienteService } from './cliente.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule //<--include
   ],
   providers: [ClienteService],
   bootstrap: [AppComponent]

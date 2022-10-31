@@ -6,28 +6,29 @@
           <div class="formContainerng">
             <form #productsForm="ngForm" (ngSubmit)="filtra(productsForm.value)">
               <div class="col-md">
-                
+                <label for="sortBys">Sort by</label>
                 <select class="form-select" placeholder="sortBy" id="sortBys" name="sortBy"[(ngModel)]="sortByselected">
-                    <option *ngFor="let by of sortBys" [value]="by" >{{ by.title }}</option>
+                    <option *ngFor="let by of sortBys" [value]="by.id" >{{ by.title }}</option>
                 </select>
               </div>
-              <div class="col-md">
+              <div style="margin-top:0px" class="col-md">
+                <label for="sortType">Sort type</label>
                 <select class="form-select" ar placeholder="sortType" id="sortType" name="sortType" [(ngModel)]="sortTypeselected">
-                  <option *ngFor="let type of sortTypes" [value]="type">{{ type.title }}</option>
+                  <option *ngFor="let type of sortTypes" [value]="type.id">{{ type.title }}</option>
                 </select>
               </div>
-              <div class="col-md">
+               <!-- <div class="col-md">
                 <div class="form-floating">
-                <input [value]="pageNumber" class="form-control" id="pageNumber" type="number" placeholder="pageNumber" name="pageNumber" ngModel>
+                <input class="form-control" id="pageNumber" type="number" placeholder="pageNumber" name="pageNumber" [(ngModel)]="pageNumberDefault">
                 <label for="pageNumber">Page Number</label>
                 </div>
-              </div>
+              </div> 
               <div class="col-md">
                 <div class="form-floating">
-                  <input class="form-control" id="resultForPage" type="number" placeholder="resultsForPage" name="resultsForPage" ngModel>
-                  <label for="resultForPage">Result for Page</label>
+                  <input class="form-control" id="resultForPage" type="number" placeholder="resultsForPage" name="resultsForPage" [(ngModel)]="resultsNumberDefault">
+                  <label for="resultForPage">Total Results for Page</label>
               </div>
-              </div>
+              </div> -->
               <div class="col-md">
                 <div class="form-floating">
                 <input class="form-control" id="dataAssunzioneStart" type="date" placeholder="dataAssunzioneStart" name="dataAssunzioneStart" ngModel>
@@ -86,7 +87,7 @@
                 <th>Police Shared</th>
               </thead>
               <tbody>
-                <tr *ngFor = "let cliente of clienti">
+                <tr *ngFor = "let cliente of clienti | paginate: { itemsPerPage: pages, currentPage: p }">
                   <td> {{ cliente.matricola }} </td>
                   <td> {{ cliente.nome }} </td>
                   <td> {{ cliente.cognome }} </td>
@@ -101,7 +102,12 @@
             </table>
           </div>
         </div>
+        <ul class="pagination justify-content-center">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      </ul>
       </div>
+      
     </div>
+    
     
     </main>
