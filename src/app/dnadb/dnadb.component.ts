@@ -50,6 +50,7 @@ export class DnadbComponent implements OnInit {
   programs!: RuoloProgram[];
   selectedProgram=0;
 
+  
 
   constructor(
     private clienteService: ClienteService, 
@@ -89,7 +90,6 @@ export class DnadbComponent implements OnInit {
   filtra(filtro: {sortBy:string, sortType:string, //pageNumber: number, resultsForPage: number
     dataAssunzioneStart: Date, dataAssunzioneEnd: Date, nome: string, congome: string, truolo: number  }){
         this.clienteService.filtraCliente(filtro).subscribe((data: Cliente[]) => {
-          console.log(data);
         this.clienti = data;
       });
   }
