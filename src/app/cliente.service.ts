@@ -13,8 +13,7 @@ export class ClienteService {
   constructor(private http: HttpClient) { }
 
   filtraCliente(object: any ): Observable<Cliente[]>{
-    console.log(object);
-        return this.http.post<Cliente[]>(`${this.baseUrl + "/dipendente/filtra"}`, object);
+    return this.http.post<Cliente[]>(`${this.baseUrl + "/dipendente/filtra"}`, object);
   }
   totClienti(): Observable<number>{
     return this.http.get<number> (`${this.baseUrl + "/dipendente/total"}`);

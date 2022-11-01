@@ -40,8 +40,6 @@ export class DnadbComponent implements OnInit {
     {id: "truolo", title: "Program"},  {id: "cartaIdentita", title: "ID"},  {id: "codiceFiscale", title: "Health ID"},];
   sortByselected= this.sortBys[0].id;
   p: number = 1;
-  collection: any[] = [1,2,3,4];
-
 
   pageNumberDefault: number = 1;
   resultsNumberDefault: number = 10;
@@ -50,8 +48,6 @@ export class DnadbComponent implements OnInit {
   pages = this.resultsNumberDefault;
   
   programs!: RuoloProgram[];
- // selectedProgram!:RuoloProgram;
-
   selectedProgram=0;
 
 
@@ -71,6 +67,7 @@ export class DnadbComponent implements OnInit {
       type: [this.sortTypeselected, [Validators.required]]
     });
     
+    //default value for truolo-program
     this.form = fb.group({
       prog: [this.selectedProgram, [Validators.required]]
     })
@@ -91,8 +88,8 @@ export class DnadbComponent implements OnInit {
     
   filtra(filtro: {sortBy:string, sortType:string, //pageNumber: number, resultsForPage: number
     dataAssunzioneStart: Date, dataAssunzioneEnd: Date, nome: string, congome: string, truolo: number  }){
-      console.log(filtro);
-      this.clienteService.filtraCliente(filtro).subscribe((data: Cliente[]) => {
+        this.clienteService.filtraCliente(filtro).subscribe((data: Cliente[]) => {
+          console.log(data);
         this.clienti = data;
       });
   }
