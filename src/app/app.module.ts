@@ -8,6 +8,7 @@ import { ClienteService } from './cliente.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
+import { RuoloProgramService } from './ruolo-program.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
     HttpClientModule,
     NgxPaginationModule //<--include
   ],
-  providers: [ClienteService],
+  providers: [ClienteService, RuoloProgramService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,3 +1,5 @@
+import { RuoloProgram } from "./ruolo-program";
+
 export class Cliente {
     matricola!: number;
 	cartaIdentita!: string;
@@ -7,6 +9,6 @@ export class Cliente {
 	dataDiNascita!: Date;
 	luogoDiNascita!: string;
 	nome!: string;
-	troulo!: number;
+	troulo!: RuoloProgram;
 	tstato!: number;
 }

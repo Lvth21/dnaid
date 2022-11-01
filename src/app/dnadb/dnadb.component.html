@@ -17,18 +17,6 @@
                   <option *ngFor="let type of sortTypes" [value]="type.id">{{ type.title }}</option>
                 </select>
               </div>
-               <!-- <div class="col-md">
-                <div class="form-floating">
-                <input class="form-control" id="pageNumber" type="number" placeholder="pageNumber" name="pageNumber" [(ngModel)]="pageNumberDefault">
-                <label for="pageNumber">Page Number</label>
-                </div>
-              </div> 
-              <div class="col-md">
-                <div class="form-floating">
-                  <input class="form-control" id="resultForPage" type="number" placeholder="resultsForPage" name="resultsForPage" [(ngModel)]="resultsNumberDefault">
-                  <label for="resultForPage">Total Results for Page</label>
-              </div>
-              </div> -->
               <div class="col-md">
                 <div class="form-floating">
                 <input class="form-control" id="dataAssunzioneStart" type="date" placeholder="dataAssunzioneStart" name="dataAssunzioneStart" ngModel>
@@ -53,15 +41,10 @@
                 <label for="cognome">Surname</label>
                 </div>
               </div>
-              <!-- <div class="col-md">
-                <div class="form-floating">
-              <input class="form-control" id="program" type="number" placeholder="truolo" name="truolo" ngModel>
-              <label for="program">Program</label>
-            </div>
-          </div> -->
           <div class="col-md">
             <label for="program">Program</label>
-            <select class="form-select" placeholder="program" id="program" name="program"[(ngModel)]="selectedProgram">
+            <select class="form-select" placeholder="truolo" id="truolo" name="truolo"[(ngModel)]="selectedProgram">
+              <option [ngValue]=0>Select</option>
                 <option *ngFor="let prog of programs" [value]="prog.idRuolo" >{{ prog.nome }}</option>
             </select>
           </div>

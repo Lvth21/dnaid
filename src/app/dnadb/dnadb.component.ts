@@ -50,7 +50,10 @@ export class DnadbComponent implements OnInit {
   pages = this.resultsNumberDefault;
   
   programs!: RuoloProgram[];
-  selectedProgram!:RuoloProgram;
+ // selectedProgram!:RuoloProgram;
+
+  selectedProgram=0;
+
 
   constructor(
     private clienteService: ClienteService, 
@@ -68,7 +71,12 @@ export class DnadbComponent implements OnInit {
       type: [this.sortTypeselected, [Validators.required]]
     });
     
-     }
+    this.form = fb.group({
+      prog: [this.selectedProgram, [Validators.required]]
+    })
+
+
+    }
 
   ngOnInit() {
     this.loadNumClienti();
@@ -85,7 +93,6 @@ export class DnadbComponent implements OnInit {
     dataAssunzioneStart: Date, dataAssunzioneEnd: Date, nome: string, congome: string, truolo: number  }){
       console.log(filtro);
       this.clienteService.filtraCliente(filtro).subscribe((data: Cliente[]) => {
-        console.log(data);
         this.clienti = data;
       });
   }
