@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Cliente } from '../cliente';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
+import { RuoloProgram } from '../ruolo-program';
+import { RuoloProgramService } from '../ruolo-program.service';
 
 @Component({
   selector: 'app-dnadb',
@@ -47,8 +49,15 @@ export class DnadbComponent implements OnInit {
   
   pages = this.resultsNumberDefault;
   
+  programs!: RuoloProgram[];
+  selectedProgram!:RuoloProgram;
 
-  constructor(private clienteService: ClienteService, private http: HttpClient, private fb: FormBuilder) {
+  constructor(
+    private clienteService: ClienteService, 
+    private http: HttpClient, 
+    private fb: FormBuilder,
+    private ruoloPservice: RuoloProgramService) {
+
     //default value for sortby
     this.form = fb.group({
       by: [this.sortByselected, [Validators.required]]
@@ -63,11 +72,11 @@ export class DnadbComponent implements OnInit {
 
   ngOnInit() {
     this.loadNumClienti();
+    this.loadPrograms();
   }
 
   loadNumClienti(){
     this.clienteService.totClienti().subscribe((data: number) => {
-      console.log(data);
       this.numClienti = data;
     })
   } 
@@ -79,8 +88,15 @@ export class DnadbComponent implements OnInit {
         console.log(data);
         this.clienti = data;
       });
-
-    
   }
+
+  loadPrograms(){
+    this.ruoloPservice.showPrograms().subscribe((data: RuoloProgram[]) => {
+      this.programs = data;
+    })
+  }
+
+
+
 }
 

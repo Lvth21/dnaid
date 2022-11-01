@@ -53,15 +53,21 @@
                 <label for="cognome">Surname</label>
                 </div>
               </div>
-              <div class="col-md">
+              <!-- <div class="col-md">
                 <div class="form-floating">
               <input class="form-control" id="program" type="number" placeholder="truolo" name="truolo" ngModel>
               <label for="program">Program</label>
             </div>
+          </div> -->
+          <div class="col-md">
+            <label for="program">Program</label>
+            <select class="form-select" placeholder="program" id="program" name="program"[(ngModel)]="selectedProgram">
+                <option *ngFor="let prog of programs" [value]="prog.idRuolo" >{{ prog.nome }}</option>
+            </select>
           </div>
               <div class="col-md">
                 <div class="form-floating">
-              <input class="btn btn-primary" type="submit" value="Invia">
+              <input class="btn btn-primary" type="submit" value="Search Now">
             </div>
           </div>
             </form>
