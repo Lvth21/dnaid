@@ -1,7 +1,7 @@
 <main class="flex-shrink-0">
-    <div class="py-5 bg-light">
-      <div class="row g-2" style="margin-left:20px">
-        <div class="mainpage" style="width:200px">
+    <div class="fill cent  bg-light">
+      <div class="row g-2 container-fluid" >
+        <div class="mainpage col-md-1">
           <h5 class="text-md-start">Client Filter</h5>
           <div class="formContainerng">
             <form #productsForm="ngForm" (ngSubmit)="filtra(productsForm.value)">
@@ -17,25 +17,25 @@
                   <option *ngFor="let type of sortTypes" [value]="type.id">{{ type.title }}</option>
                 </select>
               </div>
-              <div class="col-md">
+              <div class="col-md m">
                 <div class="form-floating">
                 <input class="form-control" id="dataAssunzioneStart" type="date" placeholder="dataAssunzioneStart" name="dataAssunzioneStart" ngModel>
                 <label for="dataAssunzioneStart">From</label>
               </div>
             </div>
-              <div class="col-md">
+              <div class="col-md m">
                 <div class="form-floating">
                 <input class="form-control" id="dataAssunzioneEnd" type="date" placeholder="dataAssunzioneEnd" name="dataAssunzioneEnd" ngModel>
                 <label for="dataAssunzioneEnd">To</label>
               </div>
             </div>
-              <div class="col-md">
+              <div class="col-md m">
                 <div class="form-floating">
                 <input class="form-control" id="nome" type="text" placeholder="nome" name="nome" ngModel>
                 <label for="nome">Name</label>
                 </div>
               </div>
-              <div class="col-md">
+              <div class="col-md m">
                 <div class="form-floating">
                 <input class="form-control" id="cognome" type="text" placeholder="cognome" name="cognome" ngModel>
                 <label for="cognome">Surname</label>
@@ -48,7 +48,7 @@
                 <option *ngFor="let prog of programs" [value]="prog.idRuolo" >{{ prog.nome }}</option>
             </select>
           </div>
-              <div class="col-md">
+              <div class="col-md m">
                 <div class="form-floating">
               <input class="btn btn-primary" type="submit" value="Search Now">
             </div>
@@ -59,7 +59,7 @@
     
     
     
-        <div class="card" style="width:80%">
+        <div class="card col-md-11">
           <h3 class="text-center"> Client List</h3>
           <h5 style="position: absolute; top: 1%; right: 1%">clients: {{numClienti}}</h5>
           <div class = "card-body">

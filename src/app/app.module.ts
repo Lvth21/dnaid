@@ -9,12 +9,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
 import { RuoloProgramService } from './ruolo-program.service';
+import { BookingpageComponent } from './bookingpage/bookingpage.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    DnadbComponent
+    DnadbComponent,
+    BookingpageComponent
   ],
   imports: [
     BrowserModule,
