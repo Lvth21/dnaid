@@ -18,6 +18,8 @@ export class ClienteService {
   totClienti(): Observable<number>{
     return this.http.get<number> (`${this.baseUrl + "/dipendente/total"}`);
   }
-
+  saveCliente(client : Cliente): Observable<Cliente[]>{
+    return this.http.post<Cliente[]>(`${this.baseUrl + "/dipendente/save"}`, client);
+  }
 
 }

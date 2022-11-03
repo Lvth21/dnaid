@@ -1,36 +1,49 @@
 <div class="cent fill">
 <div class="container">
-<form class="row g-3">
+<form #productsForm="ngForm" class="row g-3" (ngSubmit)="saveBooking(productsForm.value)">
     <div class="col-md-6">
-      <label for="inputEmail4" class="form-label">Email</label>
-      <input type="email" class="form-control" id="inputEmail4">
-    </div>
-    <div class="col-md-6">
-      <label for="inputPassword4" class="form-label">Password</label>
-      <input type="password" class="form-control" id="inputPassword4">
-    </div>
-    <div class="col-12">
-      <label for="inputAddress" class="form-label">Address</label>
-      <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-    </div>
-    <div class="col-12">
-      <label for="inputAddress2" class="form-label">Address 2</label>
-      <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+      <label for="name" class="form-label">Name</label>
+      <input type="text" class="form-control" id="name" required name="nome" ngModel>
     </div>
     <div class="col-md-6">
-      <label for="inputCity" class="form-label">City</label>
-      <input type="text" class="form-control" id="inputCity">
+      <label for="surname" class="form-label">Surname</label>
+      <input type="text" class="form-control" id="surname" required name="cognome" ngModel>
+    </div>
+    <div class="col-6">
+      <label for="dataDiNascita" class="form-label">Date of Birth</label>
+      <input type="date" class="form-control" id="dataDiNascita" required name="dataDiNascita" ngModel>
+    </div>
+    <div class="col-6">
+      <label for="luogoDiNascita" class="form-label">Where you were born</label>
+      <input type="text" class="form-control" id="luogoDiNascita" required name="luogoDiNascita" ngModel>
+    </div>
+    <div class="col-6">
+      <label for="cartaIdentita" class="form-label">ID</label>
+      <input type="text" class="form-control" id="cartaIdentita" required name="cartaIdentita" ngModel>
+    </div>
+    <div class="col-6">
+      <label for="codiceFiscale" class="form-label">Health ID</label>
+      <input type="text" class="form-control" id="codiceFiscale" required name="codiceFiscale" ngModel>
+    </div>
+    <div class="col-4">
+      <label for="dataAssunzione" class="form-label">Preferred date for the test</label>
+      <input type="date" class="form-control" id="dataAssunzione" required name="dataAssunzione" ngModel>
+    </div>
+  
+    <div class="col-md-4">
+      <label for="program" class="form-label">Program</label>
+          <select class="form-select" placeholder="truolo" id="truolo" name="truolo"[(ngModel)]="selectedProgram" required="">
+          <option disabled [ngValue]=0>Select</option>
+            <option *ngFor="let prog of programs" [ngValue]="prog" >{{ prog.nome }}</option>
+        </select>
+      
     </div>
     <div class="col-md-4">
-      <label for="inputState" class="form-label">State</label>
-      <select id="inputState" class="form-select">
-        <option selected>Choose...</option>
-        <option>...</option>
-      </select>
-    </div>
-    <div class="col-md-2">
-      <label for="inputZip" class="form-label">Zip</label>
-      <input type="text" class="form-control" id="inputZip">
+      <label for="tstato" class="form-label">Share with the Police</label>
+      <select class="form-select" placeholder="tstato" id="tstato" name="tstato"[(ngModel)]="selectedTstato" required="">
+      <option disabled [ngValue]=0>Select</option>
+        <option *ngFor="let stat of stats" [ngValue]="stat" >{{ stat.nome }}</option>
+    </select>
     </div>
     <div class="col-12">
       <div class="form-check">
