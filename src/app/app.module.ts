@@ -12,6 +12,7 @@ import { RuoloProgramService } from './ruolo-program.service';
 import { BookingpageComponent } from './bookingpage/bookingpage.component';
 import { ProgramsComponent } from './programs/programs.component';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
+import { NewprogramComponent } from './newprogram/newprogram.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { CdkAccordionModule } from '@angular/cdk/accordion';
     HomeComponent,
     DnadbComponent,
     BookingpageComponent,
-    ProgramsComponent
+    ProgramsComponent,
+    NewprogramComponent
   ],
   imports: [
     BrowserModule,

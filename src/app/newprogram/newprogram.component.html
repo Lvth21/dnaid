@@ -1,0 +1,18 @@
+<div class="cent fill">
+    <div class="container">
+        <form #productsForm="ngForm" class="row g-3" (ngSubmit)="savePrograms(productsForm.value)">
+            <div class="mb-3">
+                <label for="formGroupExampleInput" class="form-label">Program Title</label>
+                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Title" name="nome" ngModel>
+            </div>
+            <div class="form-floating">
+                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" ngModel
+                    style="height: 20em" name="descrizione"></textarea>
+                <label for="floatingTextarea2">Write a description</label>
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-outline-primary">Send</button>
+            </div>
+        </form>
+    </div>
+</div>

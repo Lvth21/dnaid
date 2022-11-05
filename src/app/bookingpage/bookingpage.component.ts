@@ -42,6 +42,7 @@ export class BookingpageComponent implements OnInit {
   saveBooking(filledform: Cliente){
     console.log(filledform);
     this.clientiService.saveCliente(filledform).subscribe();
+    alert("Request went through");
     
   }
 

@@ -21,6 +21,7 @@ export class ProgramsComponent implements OnInit {
 
   loadPrograms(){
     this.ruoloPservice.showPrograms().subscribe((data: RuoloProgram[]) => {
+      console.log(data);
       this.items = data;
     })
   }
