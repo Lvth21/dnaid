@@ -10,13 +10,16 @@ import { HttpClientModule } from '@angular/common/http';
 import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
 import { RuoloProgramService } from './ruolo-program.service';
 import { BookingpageComponent } from './bookingpage/bookingpage.component';
+import { ProgramsComponent } from './programs/programs.component';
+import { CdkAccordionModule } from '@angular/cdk/accordion';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     DnadbComponent,
-    BookingpageComponent
+    BookingpageComponent,
+    ProgramsComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +27,8 @@ import { BookingpageComponent } from './bookingpage/bookingpage.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgxPaginationModule //<--include
+    NgxPaginationModule, //<--include
+    CdkAccordionModule
   ],
   providers: [ClienteService, RuoloProgramService],
   bootstrap: [AppComponent]
