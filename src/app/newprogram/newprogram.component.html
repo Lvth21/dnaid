@@ -1,15 +1,23 @@
 <div class="cent fill">
     <div class="container">
-        <form #productsForm="ngForm" class="row g-3" (ngSubmit)="savePrograms(productsForm.value)">
+        <form form [formGroup]="form" (ngSubmit)="onSubmit()">
             <div class="mb-3">
                 <label for="formGroupExampleInput" class="form-label">Program Title</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Title" name="nome" ngModel>
+                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Title" formControlName="name" required>
+                <small class="form-text text-danger" *ngIf="f?.['name']?.errors?.['required']">
+                    Name is required</small>
             </div>
             <div class="form-floating">
-                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" ngModel
-                    style="height: 20em" name="descrizione"></textarea>
+                <textarea formControlName="descrizione" class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" required
+                    style="height: 20em"></textarea>
                 <label for="floatingTextarea2">Write a description</label>
             </div>
+            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
+                <label for="file">File</label>
+                <input accept="image/png, image/gif, image/jpeg" formControlName="file" type="file" class="form-control" (change)="onFileChange($event)">
+                <small class="form-text text-danger" *ngIf="f?.['file']?.errors?.['required']">
+                  Name is required</small>
+              </div>
             <div class="col-12">
                 <button type="submit" class="btn btn-outline-primary">Send</button>
             </div>

@@ -13,6 +13,7 @@ import { BookingpageComponent } from './bookingpage/bookingpage.component';
 import { ProgramsComponent } from './programs/programs.component';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { NewprogramComponent } from './newprogram/newprogram.component';
+import { FileUploadComponent } from './components/file-upload/file-upload.component';
 
 @NgModule({
   declarations: [
@@ -21,9 +22,11 @@ import { NewprogramComponent } from './newprogram/newprogram.component';
     DnadbComponent,
     BookingpageComponent,
     ProgramsComponent,
-    NewprogramComponent
+    NewprogramComponent,
+    FileUploadComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
