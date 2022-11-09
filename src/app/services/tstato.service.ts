@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs';
-import { Tstato } from './tstato';
+import { Tstato } from '../classes/tstato';
 @Injectable({
   providedIn: 'root'
 })

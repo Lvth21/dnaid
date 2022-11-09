@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { RuoloProgram } from '../ruolo-program';
-import { RuoloProgramService } from '../ruolo-program.service';
+import { RuoloProgram } from 'src/app/classes/ruolo-program';
+import { RuoloProgramService } from 'src/app/services/ruolo-program.service';
 
 @Component({
   selector: 'cdk-accordion-overview-example',

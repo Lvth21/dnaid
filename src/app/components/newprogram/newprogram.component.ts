@@ -1,8 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { RuoloProgram } from '../ruolo-program';
-import { RuoloProgramService } from '../ruolo-program.service';
+import { RuoloProgram } from 'src/app/classes/ruolo-program';
+import { RuoloProgramService } from 'src/app/services/ruolo-program.service';
 
 @Component({
   selector: 'app-newprogram',

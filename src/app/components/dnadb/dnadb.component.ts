@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ClienteService } from '../cliente.service';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { Cliente } from '../cliente';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
-import { RuoloProgram } from '../ruolo-program';
-import { RuoloProgramService } from '../ruolo-program.service';
-
+import { Cliente } from 'src/app/classes/cliente';
+import { RuoloProgram } from 'src/app/classes/ruolo-program';
+import { ClienteService } from 'src/app/services/cliente.service';
+import { RuoloProgramService } from 'src/app/services/ruolo-program.service';
 @Component({
   selector: 'app-dnadb',
   templateUrl: './dnadb.component.html',

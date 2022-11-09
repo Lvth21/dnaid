@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BookingpageComponent } from './bookingpage/bookingpage.component';
-import { DnadbComponent } from './dnadb/dnadb.component';
-import { HomeComponent } from './home/home.component';
-import { NewprogramComponent } from './newprogram/newprogram.component';
-import { ProgramsComponent } from './programs/programs.component';
+import { BookingpageComponent } from './components/bookingpage/bookingpage.component';
+import { DnadbComponent } from './components/dnadb/dnadb.component';
+import { HomeComponent } from './components/home/home.component';
+import { NewprogramComponent } from './components/newprogram/newprogram.component';
+import { ProgramsComponent } from './components/programs/programs.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },

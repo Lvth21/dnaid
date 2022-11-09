@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Cliente } from '../cliente';
-import { ClienteService } from '../cliente.service';
-import { RuoloProgram } from '../ruolo-program';
-import { RuoloProgramService } from '../ruolo-program.service';
-import { Tstato } from '../tstato';
-import { TstatoService } from '../tstato.service';
+import { Cliente } from 'src/app/classes/cliente';
+import { RuoloProgram } from 'src/app/classes/ruolo-program';
+import { Tstato } from 'src/app/classes/tstato';
+import { ClienteService } from 'src/app/services/cliente.service';
+import { RuoloProgramService } from 'src/app/services/ruolo-program.service';
+import { TstatoService } from 'src/app/services/tstato.service';
 
 @Component({
   selector: 'app-bookingpage',
