@@ -11,23 +11,23 @@
       [attr.id]="'accordion-header-' + index"
       [attr.aria-expanded]="accordionItem.expanded"
       [attr.aria-controls]="'accordion-body-' + index">
-      <div class="example-accordion-item-header" (click)="accordionItem.toggle()">
+      <div class="example-accordion-item-{{ accordionItem.expanded ? 'expanded' : 'header' }}" (click)="accordionItem.toggle()">
         {{ item.nome }}
         <span class="example-accordion-item-description">
           Click to {{ accordionItem.expanded ? 'close' : 'open' }}
         </span>
       </div>
-      <div 
-        class="example-accordion-item-body"
+      <div class="texta form-control example-accordion-item-body" readonly 
         role="region"
         [style.display]="accordionItem.expanded ? '' : 'none'"
         [attr.id]="'accordion-body-' + index"
         [attr.aria-labelledby]="'accordion-header-' + index">
-        {{item.descrizione}}
-      </div>
+        <span [outerHTML]="item.descrizione"></span>
+    </div>
     </cdk-accordion-item>
   </cdk-accordion>
 </div>
 </div>
 </div>
+
 
