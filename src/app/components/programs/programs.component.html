@@ -17,12 +17,13 @@
           Click to {{ accordionItem.expanded ? 'close' : 'open' }}
         </span>
       </div>
-      <div class="texta form-control example-accordion-item-body" readonly 
+      <div class="texta form-control example-accordion-item-body bgimg" readonly 
+    style="background: linear-gradient(to right, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 1) 25%, rgba(255, 255, 255, 1) 23%), url({{item.image}}) no-repeat"
         role="region"
         [style.display]="accordionItem.expanded ? '' : 'none'"
         [attr.id]="'accordion-body-' + index"
         [attr.aria-labelledby]="'accordion-header-' + index">
-        <span [outerHTML]="item.descrizione"></span>
+        <span class="sp" [outerHTML]="item.descrizione"></span>
     </div>
     </cdk-accordion-item>
   </cdk-accordion>
