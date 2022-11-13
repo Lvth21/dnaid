@@ -5,13 +5,15 @@ import { DnadbComponent } from './components/dnadb/dnadb.component';
 import { HomeComponent } from './components/home/home.component';
 import { NewprogramComponent } from './components/newprogram/newprogram.component';
 import { ProgramsComponent } from './components/programs/programs.component';
+import { UpdateprogramsComponent } from './components/updateprograms/updateprograms.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'dna-database', component: DnadbComponent  },
   { path: 'book-service', component: BookingpageComponent  },
   { path: 'programs', component: ProgramsComponent  },
-  { path: 'newprogram', component: NewprogramComponent  }
+  { path: 'newprogram', component: NewprogramComponent  },
+  { path: 'updateprograms', component: UpdateprogramsComponent  }
 ];
 
 @NgModule({

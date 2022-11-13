@@ -24,5 +24,7 @@ export class RuoloProgramService {
   saveRuoloPlusImage(formData : FormData){
     return this.http.post(`${this.baseUrl + "/ruolo/save"}`, formData)
   }
-
+  updateRuoloPlusImage(formData : FormData){
+    return this.http.put(`${this.baseUrl + "/ruolo/update"}`, formData)
+  }
 }

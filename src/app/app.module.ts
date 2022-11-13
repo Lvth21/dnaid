@@ -14,6 +14,7 @@ import { NewprogramComponent } from './components/newprogram/newprogram.componen
 import { ProgramsComponent } from './components/programs/programs.component';
 import { ClienteService } from './services/cliente.service';
 import { RuoloProgramService } from './services/ruolo-program.service';
+import { UpdateprogramsComponent } from './components/updateprograms/updateprograms.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { RuoloProgramService } from './services/ruolo-program.service';
     BookingpageComponent,
     ProgramsComponent,
     NewprogramComponent,
-    FileUploadComponent
+    FileUploadComponent,
+    UpdateprogramsComponent
   ],
   imports: [
     FormsModule,
