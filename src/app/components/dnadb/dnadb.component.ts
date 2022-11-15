@@ -86,7 +86,7 @@ export class DnadbComponent implements OnInit {
     })
   } 
     
-  filtra(filtro: {sortBy:string, sortType:string, //pageNumber: number, resultsForPage: number
+  filtra(filtro: {sortBy:string, sortType:string,
     dataAssunzioneStart: Date, dataAssunzioneEnd: Date, nome: string, congome: string, truolo: number  }){
         this.clienteService.filtraCliente(filtro).subscribe((data: Cliente[]) => {
         this.clienti = data;

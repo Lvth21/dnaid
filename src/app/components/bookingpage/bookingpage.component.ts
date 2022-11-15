@@ -14,10 +14,10 @@ import { TstatoService } from 'src/app/services/tstato.service';
 export class BookingpageComponent implements OnInit {
 
   programs!: RuoloProgram[];
-  selectedProgram=0;
+  selectedProgram=null;
 
   stats!: Tstato[];
-  selectedTstato=0;
+  selectedTstato=null;
 
   constructor(private ruoloPservice: RuoloProgramService,
               private statoService: TstatoService,

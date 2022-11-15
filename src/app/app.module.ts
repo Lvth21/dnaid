@@ -15,6 +15,7 @@ import { ProgramsComponent } from './components/programs/programs.component';
 import { ClienteService } from './services/cliente.service';
 import { RuoloProgramService } from './services/ruolo-program.service';
 import { UpdateprogramsComponent } from './components/updateprograms/updateprograms.component';
+import {BsDatepickerModule } from 'ngx-bootstrap/datepicker'
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { UpdateprogramsComponent } from './components/updateprograms/updateprogr
     ReactiveFormsModule,
     HttpClientModule,
     NgxPaginationModule, //<--include
-    CdkAccordionModule
+    CdkAccordionModule,
+    BsDatepickerModule.forRoot()
   ],
   providers: [ClienteService, RuoloProgramService],
   bootstrap: [AppComponent]
