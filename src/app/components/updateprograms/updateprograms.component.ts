@@ -37,7 +37,6 @@ export class UpdateprogramsComponent implements OnInit {
   
   form!: FormGroup;
 
-htmlfile = "Ciao<br>prova"
 
   ruolo = {
     idRuolo: 0,
@@ -45,7 +44,7 @@ htmlfile = "Ciao<br>prova"
     nome: ""
   }
 
-  
+  b!:boolean;
 
 
    //default value for truolo-program
@@ -58,9 +57,11 @@ htmlfile = "Ciao<br>prova"
   }
 
   selectionChanged(event: Event){
-console.log(this.selectedProgram);
+
 this.shownprogram =  this.programs.find(x => x.idRuolo == this.selectedProgram);
-this.descr = this.convertHtmlToText(this.shownprogram!.descrizione);
+//this.descr = this.convertHtmlToText(this.shownprogram!.descrizione);
+this.descr = htmlToText(this.shownprogram!.descrizione, {wordwrap: null});
+
     this.form  = new FormGroup({
       idRuolo: new FormControl(this.shownprogram?.idRuolo),
       descrizione: new FormControl(this.descr),
@@ -69,10 +70,17 @@ this.descr = this.convertHtmlToText(this.shownprogram!.descrizione);
       fileSource: new FormControl
       
     });
+if(this.shownprogram?.active.localeCompare("Y"))
+   this.b=true;
+   else
+   this.b=false;
+    
+console.log(this.b);
+
   }
 
   loadPrograms() {
-    this.ruoloPservice.showPrograms().subscribe((data: RuoloProgram[]) => {
+    this.ruoloPservice.showPrograms("all").subscribe((data: RuoloProgram[]) => {
       this.programs = data;
     })
   }
@@ -87,7 +95,7 @@ this.descr = this.convertHtmlToText(this.shownprogram!.descrizione);
           alert('You can\'t upload this type of file.');
           return;
         }else{
-          console.log("here");
+          
         this.form.patchValue({
           fileSource: file
           
@@ -125,18 +133,26 @@ console.log("id=" + this.ruolo.idRuolo + " desc=" + this.ruolo.descrizione + " n
         })
     }
 
-    convertHtmlToText(htmltext : string)
-    {
-      return htmlToText(htmltext, {
-        singleNewLineParagraphs: true,
-        ignoreImage: true,
-        formatters: {
-          anchor: (el, walk, builder, opts) => {
-            builder.openBlock();
-            walk(el.children, builder);
-            builder.closeBlock();
-          },
-        },
-      });
+    // convertHtmlToText(htmltext : string)
+    // {
+    //   return htmlToText(htmltext, {
+    //     singleNewLineParagraphs: true,
+    //     ignoreImage: true,
+    //     formatters: {
+    //       anchor: (el, walk, builder, opts) => {
+    //         builder.openBlock();
+    //         walk(el.children, builder);
+    //         builder.closeBlock();
+    //       },
+    //     },
+    //   });
+    // }
+
+
+    activationProg(id: number){
+      this.ruoloPservice.deleteRuolo(id).subscribe();
+      alert("Program de-activated");
     }
+
+    
 }

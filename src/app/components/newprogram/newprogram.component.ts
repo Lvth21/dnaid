@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { RuoloProgram } from 'src/app/classes/ruolo-program';
 import { RuoloProgramService } from 'src/app/services/ruolo-program.service';
 
@@ -10,7 +10,7 @@ import { RuoloProgramService } from 'src/app/services/ruolo-program.service';
   styleUrls: ['./newprogram.component.css']
 })
 export class NewprogramComponent implements OnInit {
-
+  submitted = false;
   headers = new HttpHeaders()
     .set('content-type', 'application/json')
     .set('Access-Control-Allow-Origin', '*');
@@ -27,8 +27,8 @@ export class NewprogramComponent implements OnInit {
     this.form = this.fb.group({
       name: ['', [Validators.required]],
       descrizione: [''],
-      file: [''],
-      fileSource: [null],
+      file: ['', Validators.required],
+      fileSource: [null, [Validators.required]],
     });
 
   }
@@ -38,6 +38,14 @@ export class NewprogramComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    //reactive form in ngOnInit
+    // this.form = new FormGroup({
+    //   name: new FormControl ( null, Validators.required),
+    //   descrizione: new FormControl ( null, Validators.required),
+    //   file:new FormControl ( null, Validators.required),
+    //   fileSource: new FormControl ( null, Validators.required),
+    // })
+
   }
 
   // on file select event
@@ -48,6 +56,8 @@ export class NewprogramComponent implements OnInit {
       
       if(!(file.type.match(/image.*/))){
         alert('You can\'t upload this type of file.');
+        this.form.controls["file"].setValidators([Validators.required]);
+        this.form.get('file')?.updateValueAndValidity();
         return;
       }else{
         console.log("here");
@@ -60,6 +70,11 @@ export class NewprogramComponent implements OnInit {
 
   // on form submit function
   onSubmit() {
+    this.submitted = true;
+  // stop here if form is invalid
+  if (this.form.invalid) {
+      return;
+  }
     this.ruolo.nome = this.form.get('name')!.value;
     
     this.ruolo.descrizione = this.form.get('descrizione')!.value;

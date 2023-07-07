@@ -20,7 +20,7 @@ export class ProgramsComponent implements OnInit {
   }
 
   loadPrograms(){
-    this.ruoloPservice.showPrograms().subscribe((data: RuoloProgram[]) => {
+    this.ruoloPservice.showPrograms("active").subscribe((data: RuoloProgram[]) => {
       console.log(data);
       this.items = data;
     })

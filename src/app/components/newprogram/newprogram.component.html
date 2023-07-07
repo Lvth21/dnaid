@@ -3,23 +3,24 @@
         <form form [formGroup]="form" (ngSubmit)="onSubmit()">
             <div class="mb-3">
                 <label for="formGroupExampleInput" class="form-label">Program Title</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Title" formControlName="name" required>
-                <small class="form-text text-danger" *ngIf="f?.['name']?.errors?.['required']">
-                    Name is required</small>
+                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Title" formControlName="name" >
+                <small class="form-text text-danger" *ngIf="!form.get('name')?.valid && !form.get('name')?.untouched">
+                    Name is required </small>
             </div>
             <div class="form-floating">
-                <textarea formControlName="descrizione" class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" required
+                <textarea formControlName="descrizione" class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" 
                     style="height: 20em"></textarea>
                 <label for="floatingTextarea2">Write a description</label>
             </div>
             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
                 <label for="file">File</label>
-                <input accept="image/png, image/gif, image/jpeg" formControlName="file" type="file" class="form-control" (change)="onFileChange($event)">
-                <small class="form-text text-danger" *ngIf="f?.['file']?.errors?.['required']">
-                  Name is required</small>
+                <input accept="image/png, image/gif, image/jpeg"  formControlName="file" type="file" class="form-control" (change)="onFileChange($event)">
+                <div *ngIf="submitted && f?.['file']?.errors" class="invalid-feedback"></div>
+                <small class="form-text text-danger" *ngIf="!form.get('file')?.valid && !form.get('file')?.untouched">
+                  Image is required</small>
               </div>
             <div class="col-12">
-                <button type="submit" class="btn btn-outline-primary">Send</button>
+                <button type="submit" class="btn btn-outline-primary"  [disabled]="!form.valid" >Send</button>
             </div>
         </form>
     </div>

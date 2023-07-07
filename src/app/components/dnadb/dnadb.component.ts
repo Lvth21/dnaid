@@ -94,7 +94,7 @@ export class DnadbComponent implements OnInit {
   }
 
   loadPrograms(){
-    this.ruoloPservice.showPrograms().subscribe((data: RuoloProgram[]) => {
+    this.ruoloPservice.showPrograms("all").subscribe((data: RuoloProgram[]) => {
       this.programs = data;
     })
   }

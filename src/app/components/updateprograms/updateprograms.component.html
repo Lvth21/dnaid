@@ -23,6 +23,9 @@
                     <div class="im">
                         <img src="{{shownprogram.image}}" class="img-thumbnail mx-auto d-block" alt="">
                     </div>
+                    <div *ngIf="b">
+                        <p class="al text-center">This program is currently deactivated</p>
+                    </div>
                     <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-2">
                         <label for="file">File</label>
                         <input accept="image/png, image/gif, image/jpeg" formControlName="file" type="file" class="form-control" (change)="onFileChange($event)">
@@ -36,7 +39,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="exampleFormControlTextarea1" class="form-label">Description</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" required formControlName="descrizione"
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" required formControlName="descrizione"
                             [contentEditable]="true"></textarea>
                     </div>
                     <div class="mb-3">
@@ -44,7 +47,8 @@
                     </div>
 
                     <div  class="d-grid gap-2 d-md-flex justify-content-md-end mb-3">
-                        <button type="button" class="btn btn-outline-danger">Delete {{shownprogram.nome}}</button>
+                        <button *ngIf="!b" type="button" (click)="activationProg(shownprogram.idRuolo)" class="btn btn-outline-danger">Delete {{shownprogram.nome}}</button>
+                        <button *ngIf="b" type="button" (click)="activationProg(shownprogram.idRuolo)" class="btn btn-outline-success">Activate {{shownprogram.nome}}</button>
                     </div>
                 </div>
                 </form>

@@ -12,12 +12,11 @@ export class RuoloProgramService {
 
   constructor(private http: HttpClient) { }
 
-  showPrograms(): Observable<RuoloProgram[]> {
-    return this.http.get<RuoloProgram[]> (`${this.baseUrl + "/ruolo/get"}`);
+  showPrograms(active: string): Observable<RuoloProgram[]> {
+    return this.http.get<RuoloProgram[]> (`${this.baseUrl + "/ruolo/get-" + active}`);
   }
 
   saveRuoloPrograms(program: RuoloProgram):Observable<RuoloProgram>{
-    console.log(program);
     return this.http.post<RuoloProgram> (`${this.baseUrl + "/ruolo/save"}`, program);
   }
 
@@ -27,4 +26,9 @@ export class RuoloProgramService {
   updateRuoloPlusImage(formData : FormData){
     return this.http.put(`${this.baseUrl + "/ruolo/update"}`, formData)
   }
+
+  deleteRuolo(id: number){
+    return this.http.delete(`${this.baseUrl + "/ruolo/activation/" + id}`)
+  }
+
 }

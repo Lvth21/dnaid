@@ -5,6 +5,7 @@ export class RuoloProgram {
     descrizione!: string;
     nome!: string;
     image!:string;
+    active!:string;
 
     constructor(args: RuoloProgram) {
         Object.assign(this, args);

@@ -29,7 +29,7 @@ export class BookingpageComponent implements OnInit {
   }
 
   loadPrograms(){
-    this.ruoloPservice.showPrograms().subscribe((data: RuoloProgram[]) => {
+    this.ruoloPservice.showPrograms("active").subscribe((data: RuoloProgram[]) => {
       this.programs = data;
     })
   }
